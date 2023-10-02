@@ -1,0 +1,112 @@
+.contenedor-card{
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px;
+  background-color:white;
+  display: grid;
+  grid-gap: 100px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.mensaje-card{
+  /* grid-column-start: 1;
+  grid-column-end: 6; */
+  grid-column: span 7;
+  /* background-color: blueviolet; */
+}
+
+.img-card-a{
+  height: 330px; 
+}
+
+
+/* En tu archivo CSS */
+.custom-caption-title {
+  font-size: 44px;
+}
+
+.custom-caption-text {
+  font-size: 21px;
+}
+
+.custom-card-text {
+  font-size: 13px;
+}
+
+.custom_FT-color{
+  background-color: var(--bs-gray-300);
+  min-height: 260px;
+}
+
+.custom_service-color{
+  background-image: linear-gradient(#d6ebed,#f2b16f) !important ;
+}
+
+.custom_bkb-color{
+  background-color:whitesmoke;
+}
+.custom_Fc-color{
+  color: black;
+}
+
+.custom_h1-color{
+  color:white;
+  font-weight: bold;
+}
+
+.custom_h1-red-color{
+  color: brown;
+  font-weight: bold;
+}
+.custom-border-color {
+  border-color:brown !important; /* !important puede ser necesario para sobrescribir estilos de Bootstrap */
+}
+
+.social-icons {
+  display: flex;
+  flex-direction: row;
+ /* justify-content: space-around;  */
+  flex-wrap: wrap;
+  color: darkgoldenrod;
+}
+
+.custom-color-social-icons {
+  color: darkgoldenrod;
+}
+
+
+.my-image {
+  width: 120px;
+  height: auto; /* esto mantendrá las proporciones de la imagen */
+  border-radius: 100%;
+}
+
+.my-image-brand {
+  width: 60px;
+  height: auto; /* esto mantendrá las proporciones de la imagen */
+  border-radius: 100%;
+}
+.custom-margen{
+  margin-right: 5px;
+}
+
+.custom-centered-content {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra horizontalmente */
+}
+
+.custom-footer-autor {
+  font-size: 11px; 
+  text-align: center; 
+}
+
+.custom-centered-proyect {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra horizontalmente */
+}
