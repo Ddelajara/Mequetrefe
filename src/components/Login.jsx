@@ -2,11 +2,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Row, Col } from 'react-bootstrap';
 import { useState } from 'react'
+import axios from "axios"
 
 export const Login = () => {
 
     const [user, setUser] = useState({
-        email: '',
+        correo: '',
         password:''
     })
 
@@ -17,9 +18,20 @@ export const Login = () => {
         })
     }
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault()
-        alert('este es un mensaje cuando presionamos submit ' + user.email + ' ' + user.password)
+        const url = 'http://localhost:3002/api/v1/login'
+        try {
+            const {data} = await axios.post(url, user, {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+            alert('este es un mensaje cuando presionamos submit ' + user.correo + ' ' + user.password);
+            alert(data)
+          } catch (error) {
+            alert('Backend: '+ error.response.data.message);
+          }
     }
 
 return (
@@ -27,7 +39,7 @@ return (
 <div className="container d-flex justify-content-center mt-5">
     <Row>
         <Col md={6}>
-            <img src="../public/image/MQT114.jpg" alt="Elvis" className="img-fluid rounded" style={{height: 'auto', maxHeight: '100%'}} />
+            <img src="/image/MQT114.jpg" alt="Elvis" className="img-fluid rounded" style={{height: 'auto', maxHeight: '100%'}} />
         </Col>
         <Col md={6}>
             <Form onSubmit={handleSubmit} className="rounded border p-4 custom-border-color">
@@ -37,10 +49,10 @@ return (
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email"
-                            name="email"
+                            name="correo"
                             placeholder="tucuenta@correo.com"
                             required
-                            onChange={handleChange} value={user.email}/>
+                            onChange={handleChange} value={user.correo}/>
                 <Form.Text className="text-muted">
                     We'll never share your email with anyone elseooo.
                 </Form.Text>
