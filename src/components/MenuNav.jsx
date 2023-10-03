@@ -43,7 +43,7 @@ export function MenuNav() {
                                 size="sm">Registrate</Button>
                     </Stack>
                 )}
-                {isLoggedIn && <UserBadge firstName="Daniel" lastName="De la Jara" />}
+                {isLoggedIn && <UserBadge firstName="Claudio" lastName="Muñoz" />}
                 </Navbar.Collapse>
             </Container>
             </Navbar>

@@ -3,6 +3,10 @@ import Form from 'react-bootstrap/Form';
 import { Row, Col } from 'react-bootstrap';
 import { useState } from 'react'
 import axios from "axios"
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 export const Login = () => {
 
@@ -27,16 +31,30 @@ export const Login = () => {
                 'Content-Type': 'application/json'
               }
             });
-            alert('este es un mensaje cuando presionamos submit ' + user.correo + ' ' + user.password);
-            alert(data)
+    
+    
+            MySwal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Tu acceso ha sido completado ' + user.correo,
+                footer: '<a href="">Bienvenido nuevamente</a>',
+                 showConfirmButton: false,
+                timer: 2300
+              })
+    
           } catch (error) {
-            alert('Backend: '+ error.response.data.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Las credenciales ingresadas no son válidas',
+                    text: 'Error de acceso!',
+                    timer: 2300
+                })
           }
     }
 
 return (
 
-<div className="container d-flex justify-content-center mt-5">
+<div className="container d-flex justify-content-center mt-5 mb-5">
     <Row>
         <Col md={6}>
             <img src="/image/MQT114.jpg" alt="Elvis" className="img-fluid rounded" style={{height: 'auto', maxHeight: '100%'}} />
