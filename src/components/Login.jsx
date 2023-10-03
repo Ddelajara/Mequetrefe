@@ -5,10 +5,14 @@ import { useState } from 'react'
 import axios from "axios"
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { useContext } from 'react';
+import { UserContext } from '../context/user/userContext';
 
 const MySwal = withReactContent(Swal)
 
 export const Login = () => {
+
+    const [state, dispatch] = useContext(UserContext)
 
     const [user, setUser] = useState({
         correo: '',
