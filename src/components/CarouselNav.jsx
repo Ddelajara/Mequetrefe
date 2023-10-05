@@ -7,7 +7,7 @@ export function CarouselNav() {
       <Carousel.Item>
         <img 
           className='d-block w-100'
-          src='../../public/image/BANNER-ESP-1240X375-1.jpg' 
+          src='/image/BANNER-ESP-1240X375-1.jpg' 
           alt='Banner Pincel'
           style={{ height: '350px' }} 
         />
@@ -19,7 +19,7 @@ export function CarouselNav() {
       <Carousel.Item>
       <img
           className='d-block w-100'
-          src='../../public/image/BANNER-CTO-1240X375_A.jpg' 
+          src='/image/BANNER-CTO-1240X375_A.jpg' 
           alt='Banner Pincel'
           style={{ height: '350px' }}
         />

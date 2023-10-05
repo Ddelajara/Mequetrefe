@@ -7,9 +7,9 @@ import './index.css'
 import { UserProvider } from './context/user/userProvider.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <UserProvider>
+<UserProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  // </UserProvider>
+</UserProvider>
 )

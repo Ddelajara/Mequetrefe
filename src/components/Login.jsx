@@ -2,11 +2,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Row, Col } from 'react-bootstrap';
 import { useState } from 'react'
+import { useContext } from 'react';
+import { UserContext } from '../context/user/userContext';
 import axios from "axios"
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import { useContext } from 'react';
-import { UserContext } from '../context/user/userContext';
 
 const MySwal = withReactContent(Swal)
 
@@ -36,16 +36,21 @@ export const Login = () => {
               }
             });
     
-    
-            MySwal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Tu acceso ha sido completado ' + user.correo,
-                footer: '<a href="">Bienvenido nuevamente</a>',
-                 showConfirmButton: false,
-                timer: 2300
-              })
-    
+            // MySwal.fire({
+            //     position: 'center',
+            //     icon: 'success',
+            //     title: 'Tu acceso ha sido completado ' + user.correo,
+            //      showConfirmButton: false,
+            //     timer: 2300
+            //   })
+
+              dispatch({
+                type:'LOGIN',
+                payload: data
+            })
+
+            localStorage.setItem('token', JSON.stringify(data))
+
           } catch (error) {
                 Swal.fire({
                     icon: 'error',

@@ -3,15 +3,51 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Form, FormControl, Button, Stack } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../context/user/userContext';
 import { UserBadge } from './UserBadge';
-
+import jwt_decode from "jwt-decode";
 
 export function MenuNav() {
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+    const [state] = useContext(UserContext)
+  //  const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [usuarioDecodificado, setusuarioDecodificado] = useState(null)
+    let isLoggedIn = false;
+    let nombre = null;
+    let apellido = null;
+    let correo = null;
     const navigate = useNavigate();
+
+    const token = state?.token
+
+    alert('DANIEL => '+ JSON.stringify(token))
+
+    if(token){
+        const decoded = jwt_decode(token);
+        alert(JSON.stringify(decoded));
+        isLoggedIn = true;
+        nombre = decoded.data.nombre.toUpperCase();
+        apellido = decoded.data.apellido.toUpperCase();
+        correo = decoded.data.correo;
+//         setusuarioDecodificado(decoded)
+       // setIsLoggedIn(true)
+    }
+
+    //const decoded = jwt_decode(token);
+    //alert(JSON.stringify(decoded));
+
+    // useEffect(() => {
+    //     alert('antes del if')
+    //     if(token){
+    //         const decoded = jwt_decode(token);
+    //         setusuarioDecodificado(decoded)
+    //         //setIsLoggedIn(!isLoggedIn)
+    //     }  
+    // },[state])
+    //alert(JSON.stringify(decoded))
+
 
   return (
     <>
@@ -43,7 +79,7 @@ export function MenuNav() {
                                 size="sm">Registrate</Button>
                     </Stack>
                 )}
-                {isLoggedIn && <UserBadge firstName="Claudio" lastName="Muñoz" />}
+                {isLoggedIn && <UserBadge firstName={nombre} lastName={apellido} correo={correo}/>}
                 </Navbar.Collapse>
             </Container>
             </Navbar>

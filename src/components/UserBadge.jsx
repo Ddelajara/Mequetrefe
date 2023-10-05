@@ -1,6 +1,13 @@
 
-export const UserBadge = ({ firstName, lastName }) => {
-  return (
+export const UserBadge = ({ firstName, lastName, correo }) => {
+
+    function onLogout() {
+        alert('Sali de la sesión');
+        localStorage.removeItem('token')
+        // Aquí puedes agregar más lógica si es necesario, por ejemplo, borrar tokens, redirigir al usuario, etc.
+    }
+
+    return (
     <>
     <div style={{ display: 'flex', alignItems: 'center' }}>
         <div style={{
@@ -17,7 +24,16 @@ export const UserBadge = ({ firstName, lastName }) => {
             {firstName[0]}{lastName[0]}
         </div>
         <div>
-            <p style={{ margin: 0 }}>dadelajara@udd.cl / Logout</p> 
+            {/* <p style={{ margin: 0 }}>{correo} / Logout</p>  */}
+            <p style={{ margin: 0 }}>{correo} / 
+                <a href="#" onClick={(e) => { 
+                    e.preventDefault(); 
+                    onLogout(); 
+                }}>
+                    Logout
+                </a>
+            </p>
+
         </div>
     </div>
     </>
