@@ -13,7 +13,7 @@ export function MenuNav() {
 
     const [state] = useContext(UserContext)
   //  const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [usuarioDecodificado, setusuarioDecodificado] = useState(null)
+  //  const [usuarioDecodificado, setusuarioDecodificado] = useState(null)
     let isLoggedIn = false;
     let nombre = null;
     let apellido = null;
@@ -22,11 +22,11 @@ export function MenuNav() {
 
     const token = state?.token
 
-    alert('DANIEL => '+ JSON.stringify(token))
+ //   alert('DANIEL => '+ JSON.stringify(token))
 
     if(token){
         const decoded = jwt_decode(token);
-        alert(JSON.stringify(decoded));
+        //alert(JSON.stringify(decoded));
         isLoggedIn = true;
         nombre = decoded.data.nombre.toUpperCase();
         apellido = decoded.data.apellido.toUpperCase();
@@ -65,9 +65,9 @@ export function MenuNav() {
                     <Nav.Link href="/">Inicio</Nav.Link>
                     <Nav.Link href="#link">Tienda</Nav.Link>
                     <Nav.Link href="#link">Acerca de Nosotros</Nav.Link>
-                    <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
+                    {/* <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
                     {isLoggedIn ? 'Logout' : 'Login'}
-                    </button>
+                    </button> */}
                 </Nav>
                 {!isLoggedIn && (
                     <Stack direction="horizontal" gap={2}>

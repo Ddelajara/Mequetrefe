@@ -36,18 +36,18 @@ export const Login = () => {
               }
             });
     
-            // MySwal.fire({
-            //     position: 'center',
-            //     icon: 'success',
-            //     title: 'Tu acceso ha sido completado ' + user.correo,
-            //      showConfirmButton: false,
-            //     timer: 2300
-            //   })
-
               dispatch({
                 type:'LOGIN',
                 payload: data
             })
+
+            MySwal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Tu acceso ha sido completado ' + user.correo,
+                 showConfirmButton: false,
+                timer: 2300
+              })
 
             localStorage.setItem('token', JSON.stringify(data))
 

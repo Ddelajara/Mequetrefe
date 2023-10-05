@@ -1,10 +1,46 @@
+import { useNavigate } from 'react-router-dom';
+//import { useState } from 'react'
+import { useContext } from 'react';
+import { UserContext } from '../context/user/userContext';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 export const UserBadge = ({ firstName, lastName, correo }) => {
 
+    const navigate = useNavigate();
+    const [state, dispatch] = useContext(UserContext)
+    
     function onLogout() {
-        alert('Sali de la sesión');
-        localStorage.removeItem('token')
-        // Aquí puedes agregar más lógica si es necesario, por ejemplo, borrar tokens, redirigir al usuario, etc.
+
+        // Aquí borrar tokens, redirigir al usuario
+        //alert('Sali de la sesión');
+    
+        MySwal.fire({
+            title: 'Logout?',
+            text: "Estas seguro de cerrar tu sesión!",
+            icon: 'advertencia',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, cerrar!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                    localStorage.removeItem('token')
+                    dispatch({
+                        type:'LOGOUT'
+                    })
+                    navigate('/')
+                Swal.fire(
+                'Logout exitoso!',
+                'Se ha cerrado la sesión',
+                'success'
+              )
+            }
+          })
+    
+        
     }
 
     return (
