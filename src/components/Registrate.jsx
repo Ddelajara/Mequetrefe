@@ -49,8 +49,8 @@ export function Registrate() {
         } else {
             Swal.fire({
                 icon: 'error',
-                title: response.data.message,
-                text: 'Error de acceso!',
+                title: 'Problemas en el registro',
+                text: response.data.message,
                 timer: 2300
             })
         }
@@ -61,7 +61,7 @@ export function Registrate() {
                 icon: 'error',
                 title: 'Problemas en el registro',
                 text: error.response.data.message,
-                timer: 2300
+                timer: 3000
             })
     } else {
           alert('Ocurrió un error al registrar al usuario.');
