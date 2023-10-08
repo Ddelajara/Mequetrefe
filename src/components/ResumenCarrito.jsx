@@ -1,20 +1,46 @@
 import { useCarrito } from '../context/carrito/carritoContext';
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+import ListGroupItem from 'react-bootstrap/ListGroupItem';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export function ResumenCarrito() {
     const { carrito, eliminarProducto } = useCarrito();
+    const total = carrito.reduce((acc, producto) => acc + parseFloat(producto.Precio), 0).toFixed(2);
 
     return (
-        <div>
-            <h5>Resumen del Carro</h5>
-            <ul>
+        <Card className="border p-3 rounded">
+            <Card.Header style={{ color: '#228b22', fontWeight: 'bold' }}>
+                <h3>Resumen del Carro</h3>
+            </Card.Header>
+            <ListGroup variant="flush">
                 {carrito.map((producto, index) => (
-                    <li key={index}>
-                        {producto.Titulo} - ${producto.Precio} 
-                        <button onClick={() => eliminarProducto(index)}>Eliminar</button>
-                    </li>
+                    <ListGroupItem key={index}>
+                        <Row>
+                            <Col xs={6} className="producto-text">
+                                {producto.Titulo}
+                            </Col>
+                            <Col xs={3} className="text-right producto-precio">
+                                ${producto.Precio}
+                            </Col>
+                            <Col xs={3} className="text-right">
+                                <Button 
+                                    variant="danger" 
+                                    size="sm" 
+                                    onClick={() => eliminarProducto(index)}
+                                >
+                                    Eliminar
+                                </Button>
+                            </Col>
+                        </Row>
+                    </ListGroupItem>
                 ))}
-            </ul>
-            <p>Total: ${carrito.reduce((acc, producto) => acc + parseFloat(producto.Precio), 0).toFixed(2)}</p>
-        </div>
+            </ListGroup>
+            <Card.Footer>
+                <h4>Total: ${total}</h4>
+            </Card.Footer>
+        </Card>
     );
 }

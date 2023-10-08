@@ -35,7 +35,7 @@ export function CardProduct({ Titulo, Texto, Precio, Imagen }) {
     }
 
     return (
-      <div className="d-flex justify-content-around mb-5">
+      <div className="d-flex justify-content-between mb-5">
         <Card style={{ width: '25rem' }}>
           <Card.Img variant="top" src={Imagen} />
           <Card.Body>
@@ -56,4 +56,3 @@ export function CardProduct({ Titulo, Texto, Precio, Imagen }) {
       </div>
     );
 }
-  

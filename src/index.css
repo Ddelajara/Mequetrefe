@@ -113,3 +113,17 @@
   flex-wrap: wrap;
   justify-content: center; /* Centra horizontalmente */
 }
+
+.producto-text {
+  font-family: 'Open Sans', sans-serif; /* Puedes cambiar a la fuente que más te guste */
+  font-size: 16px;
+  font-weight: 500;
+  color: #555;
+}
+
+.producto-precio {
+  font-family: 'Open Sans', sans-serif; /* Puedes cambiar a la fuente que más te guste */
+  font-size: 16px;
+  font-weight: bold;
+  color:chocolate;
+}

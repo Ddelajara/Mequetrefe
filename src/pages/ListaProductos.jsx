@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { CardProduct } from '../components/CardProduct'
 import { ResumenCarrito } from '../components/ResumenCarrito';
-import { ModalCustom } from '../components/ModalCustom';
+import { Footer } from '../components/Footer'
 
 export function ListaProductos() {
   const [productos, setProductos] = useState([]);
@@ -20,10 +20,11 @@ export function ListaProductos() {
   }, []);
 
   return (
+    <>
     <div className="container mt-5">
         <h1>Lista de Servicios</h1><br/>
         <div className="row">
-            <div className="col-md-8">
+            <div className="col-md-7">
                 {productos.map((producto, index) => (
                     <CardProduct
                     key={index}
@@ -34,11 +35,14 @@ export function ListaProductos() {
                     />
                 ))}
             </div>
-            <div className="col-md-4">
+            <div className="col-md-5">
                 <ResumenCarrito />
-                <ModalCustom Heading="Validación Curstom"/>
             </div>
         </div>
     </div>
+    
+    <Footer/>
+
+    </>
   );
 }
