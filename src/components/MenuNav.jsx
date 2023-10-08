@@ -63,7 +63,7 @@ export function MenuNav() {
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link href="/">Inicio</Nav.Link>
-                    <Nav.Link href="#link">Tienda</Nav.Link>
+                    <Nav.Link href="/ListaProductos">Tienda</Nav.Link>
                     <Nav.Link href="#link">Acerca de Nosotros</Nav.Link>
                     {/* <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
                     {isLoggedIn ? 'Logout' : 'Login'}

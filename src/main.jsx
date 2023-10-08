@@ -5,11 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { App } from './App.jsx'
 import './index.css'
 import { UserProvider } from './context/user/userProvider.jsx'
+import { CarritoProvider } from './context/carrito/carritoContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 <UserProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <CarritoProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </CarritoProvider>
 </UserProvider>
 )
