@@ -28,7 +28,8 @@ export const Login = () => {
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
-        const url = 'http://localhost:3002/api/v1/login'
+
+        const url = import.meta.env.VITE_BACKEND_URL + 'login'
         try {
             const {data} = await axios.post(url, user, {
               headers: {

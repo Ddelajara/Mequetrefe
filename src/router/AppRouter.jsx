@@ -3,6 +3,8 @@ import { Home } from "../pages/Home"
 import { Login } from "../components/Login"
 import { MenuNav } from "../components/MenuNav"
 import { Registrate } from "../components/Registrate"
+import { Onboarding } from "../pages/Onboarding"
+import { ListaProductos } from "../pages/ListaProductos"
 
 export const AppRouter = () => {
   return (
@@ -13,6 +15,8 @@ export const AppRouter = () => {
             <Route path='/' element={<Home />}/>
             <Route path='/Login' element={<Login />}/>
             <Route path='/Registrate' element={<Registrate />}/>
+            <Route path='/Onboarding' element={<Onboarding />}/>
+            <Route path='/ListaProductos' element={<ListaProductos />}/>
         </Routes>
 
     </>

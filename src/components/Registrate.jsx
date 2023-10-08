@@ -8,12 +8,14 @@ import Container from 'react-bootstrap/Container';
 import axios from 'axios'; 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { useNavigate } from 'react-router-dom';
 
 const MySwal = withReactContent(Swal)
 
 
 export function Registrate() {
   const [validated, setValidated] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -37,7 +39,8 @@ export function Registrate() {
       };
       // Envía la data al servidor usando axios
       try {
-        const response = await axios.post('http://localhost:3002/api/v1/users', userData);
+        const url = import.meta.env.VITE_BACKEND_URL + 'users'
+        const response = await axios.post(url, userData);
         if (response.status === 201) {
             MySwal.fire({
                 position: 'center',
@@ -46,6 +49,8 @@ export function Registrate() {
                  showConfirmButton: false,
                 timer: 2300
               })
+
+              navigate('/Onboarding')
         } else {
             Swal.fire({
                 icon: 'error',

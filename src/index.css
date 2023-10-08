@@ -74,7 +74,10 @@
   color: darkgoldenrod;
 }
 
-
+.custom_Precio-color{
+  color: brown;
+  font-weight: bold;
+}
 .my-image {
   width: 120px;
   height: auto; /* esto mantendrá las proporciones de la imagen */

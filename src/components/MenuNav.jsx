@@ -72,11 +72,11 @@ export function MenuNav() {
                 {!isLoggedIn && (
                     <Stack direction="horizontal" gap={2}>
                         <Button onClick={() => navigate('/Login')}
-                                variant="outline-danger" 
+                                variant="danger" 
                                 size="sm">Iniciar Sesión</Button>
                         <Button onClick={() => navigate('/Registrate')} 
                                 variant="outline-danger" 
-                                size="sm">Registrate</Button>
+                                size="sm">Crear una Cuenta</Button>
                     </Stack>
                 )}
                 {isLoggedIn && <UserBadge firstName={nombre} lastName={apellido} correo={correo}/>}
