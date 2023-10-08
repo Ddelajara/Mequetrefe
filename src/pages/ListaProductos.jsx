@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { CardProduct } from '../components/CardProduct'
 import { ResumenCarrito } from '../components/ResumenCarrito';
+import { ModalCustom } from '../components/ModalCustom';
 
 export function ListaProductos() {
   const [productos, setProductos] = useState([]);
@@ -35,6 +36,7 @@ export function ListaProductos() {
             </div>
             <div className="col-md-4">
                 <ResumenCarrito />
+                <ModalCustom Heading="Validación Curstom"/>
             </div>
         </div>
     </div>
