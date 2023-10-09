@@ -1,10 +1,34 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import { ModalCustom } from '../../components/ModalCustom';
+import { UserContext } from '../user/userContext';
 
 const CarritoContext = createContext();
 
 export const CarritoProvider = ({ children }) => {
-    const [carrito, setCarrito] = useState([]);
+    //const { token } = useContext(UserContext);
+    const [state] = useContext(UserContext)
+ //   const user = useContext(UserContext);
+    const token = state?.token;
+//    alert(token)
+
+    const inicializarCarrito = () => {
+
+        console.log('Inicializando carrito...');
+        if (!token) return [];  // Si el usuario no está logueado, devuelve un carrito vacío
+
+        const carritoLS = localStorage.getItem('carrito');
+        return carritoLS ? JSON.parse(carritoLS) : [];
+    };
+
+    const [carrito, setCarrito] = useState(inicializarCarrito);
+
+    useEffect(() => {
+        console.log('por aqui antes del if del useEffect', token);
+        if (token) {  // Solo guarda en localStorage si el usuario está logueado
+            console.log('Guardando carrito en localStorage:', carrito);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+        }
+    }, [carrito, token]);
 
     const agregarProducto = (producto) => {
         setCarrito([...carrito, producto]);

@@ -13,7 +13,7 @@ export function ResumenCarrito() {
     return (
         <Card className="border p-3 rounded">
             <Card.Header style={{ color: '#228b22', fontWeight: 'bold' }}>
-                <h3>Resumen del Carro</h3>
+                <h2>Resumen del Carro</h2>
             </Card.Header>
             <ListGroup variant="flush">
                 {carrito.map((producto, index) => (

@@ -36,7 +36,9 @@ export const Login = () => {
                 'Content-Type': 'application/json'
               }
             });
-    
+            
+            localStorage.setItem('token', JSON.stringify(data))
+            
               dispatch({
                 type:'LOGIN',
                 payload: data
@@ -50,8 +52,7 @@ export const Login = () => {
                 timer: 2300
               })
 
-            localStorage.setItem('token', JSON.stringify(data))
-
+            
           } catch (error) {
                 Swal.fire({
                     icon: 'error',
