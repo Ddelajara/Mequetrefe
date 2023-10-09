@@ -5,12 +5,14 @@ import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { PayPalButtons } from '@paypal/react-paypal-js';
 
 export function ResumenCarrito() {
     const { carrito, eliminarProducto } = useCarrito();
     const total = carrito.reduce((acc, producto) => acc + parseFloat(producto.Precio), 0).toFixed(2);
 
     return (
+    <>
         <Card className="border p-3 rounded">
             <Card.Header style={{ color: '#228b22', fontWeight: 'bold' }}>
                 <h2>Resumen del Carro</h2>
@@ -42,5 +44,7 @@ export function ResumenCarrito() {
                 <h4>Total: ${total}</h4>
             </Card.Footer>
         </Card>
+        <PayPalButtons />
+    </>
     );
 }

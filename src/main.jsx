@@ -6,13 +6,19 @@ import { App } from './App.jsx'
 import './index.css'
 import { UserProvider } from './context/user/userProvider.jsx'
 import { CarritoProvider } from './context/carrito/carritoContext.jsx'
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-<UserProvider>
-    <CarritoProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </CarritoProvider>
-</UserProvider>
+<PayPalScriptProvider
+    options={{
+      "client-id": import.meta.env.VITE_PAYPPAL_CLIENT_ID
+    }}>
+  <UserProvider>
+      <CarritoProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </CarritoProvider>
+  </UserProvider>
+</PayPalScriptProvider>
 )
