@@ -4,8 +4,12 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import { useCarrito } from '../context/carrito/carritoContext';
+import { useEffect } from 'react';
 
 export const PagoOk = () => {
+
+        const {setCarrito } = useCarrito();  // Añade setCarrito aquí
 
         // Recuperando datos desde localStorage
         const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
@@ -13,6 +17,11 @@ export const PagoOk = () => {
         //localStorage.removeItem('orderDetails');
 
         const navigate = useNavigate();
+
+           // Limpiar el carrito de compras cuando se monta el componente
+        useEffect(() => {
+            setCarrito([]);
+        }, [setCarrito]);
 
   return (
     <>

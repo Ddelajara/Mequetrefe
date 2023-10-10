@@ -12,8 +12,6 @@ import jwt_decode from "jwt-decode";
 export function MenuNav() {
 
     const [state] = useContext(UserContext)
-  //  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  //  const [usuarioDecodificado, setusuarioDecodificado] = useState(null)
     let isLoggedIn = false;
     let nombre = null;
     let apellido = null;
@@ -22,32 +20,15 @@ export function MenuNav() {
 
     const token = state?.token
 
- //   alert('DANIEL => '+ JSON.stringify(token))
-
     if(token){
         const decoded = jwt_decode(token);
-        //alert(JSON.stringify(decoded));
+
         isLoggedIn = true;
         nombre = decoded.data.nombre.toUpperCase();
         apellido = decoded.data.apellido.toUpperCase();
         correo = decoded.data.correo;
-//         setusuarioDecodificado(decoded)
-       // setIsLoggedIn(true)
+
     }
-
-    //const decoded = jwt_decode(token);
-    //alert(JSON.stringify(decoded));
-
-    // useEffect(() => {
-    //     alert('antes del if')
-    //     if(token){
-    //         const decoded = jwt_decode(token);
-    //         setusuarioDecodificado(decoded)
-    //         //setIsLoggedIn(!isLoggedIn)
-    //     }  
-    // },[state])
-    //alert(JSON.stringify(decoded))
-
 
   return (
     <>

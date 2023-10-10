@@ -27,9 +27,7 @@ export const PayPalButton = ({invoice, totalValue}) => {
 
         onApprove={async (data, actions) => {
             const order = await actions.order?.capture();
-            console.log(order); // Aquí puedes ver los detalles del pedido aprobado
-
-                localStorage.removeItem('carrito');
+                 localStorage.removeItem('carrito');
 
                 // Guardando datos en localStorage
                 localStorage.setItem('orderDetails', JSON.stringify({

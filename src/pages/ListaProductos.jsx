@@ -9,7 +9,6 @@ export function ListaProductos() {
   const url = import.meta.env.VITE_BACKEND_URL + 'products'
 
   useEffect(() => {
-    // Aquí asumo que ya tienes axios configurado, si no es así, añade la URL completa
     axios.get(url)
       .then(response => {
         setProductos(response.data);
@@ -40,7 +39,6 @@ export function ListaProductos() {
             </div>
         </div>
     </div>
-    
     <Footer/>
 
     </>

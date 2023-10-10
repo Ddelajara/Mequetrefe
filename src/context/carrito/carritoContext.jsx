@@ -5,9 +5,7 @@ import { UserContext } from '../user/userContext';
 const CarritoContext = createContext();
 
 export const CarritoProvider = ({ children }) => {
-    //const { token } = useContext(UserContext);
     const [state] = useContext(UserContext)
- //   const user = useContext(UserContext);
     const token = state?.token;
 //    alert(token)
 
@@ -37,7 +35,7 @@ export const CarritoProvider = ({ children }) => {
     };
 
     return (
-        <CarritoContext.Provider value={{ carrito, agregarProducto, eliminarProducto }}>
+        <CarritoContext.Provider value={{ carrito, agregarProducto, eliminarProducto, setCarrito}}>
             {children}
         </CarritoContext.Provider>
     );
