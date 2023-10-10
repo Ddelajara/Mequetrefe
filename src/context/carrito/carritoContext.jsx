@@ -21,7 +21,6 @@ export const CarritoProvider = ({ children }) => {
     const [carrito, setCarrito] = useState(inicializarCarrito);
 
     useEffect(() => {
-        console.log('por aqui antes del if del useEffect', token);
         if (token) { 
             localStorage.setItem('carrito', JSON.stringify(carrito));
         }

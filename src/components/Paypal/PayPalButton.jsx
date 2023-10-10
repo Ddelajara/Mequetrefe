@@ -1,6 +1,14 @@
 import { PayPalButtons } from "@paypal/react-paypal-js"
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 export const PayPalButton = ({invoice, totalValue}) => {
+
+    const navigate = useNavigate();
+
   return (
     <PayPalButtons 
         createOrder = {(data, actions) =>{
@@ -20,16 +28,38 @@ export const PayPalButton = ({invoice, totalValue}) => {
         onApprove={async (data, actions) => {
             const order = await actions.order?.capture();
             console.log(order); // Aquí puedes ver los detalles del pedido aprobado
-            alert('Pago realizado con éxito!');
+
+                localStorage.removeItem('carrito');
+
+                // Guardando datos en localStorage
+                localStorage.setItem('orderDetails', JSON.stringify({
+                    orderID: order.id,
+                    creationDate: order.create_time,
+                    name: order.payer.name.given_name + ' ' + order.payer.name.surname,
+                    email: order.payer.email_address
+                }));
+
+                navigate('/PagoOk')
+
         }}
     
         onError={(err) => {
             console.error(err);
-            alert('Ocurrió un error al procesar el pago.');
+            Swal.fire({
+                icon: 'error',
+                title: 'Fallo en la transacción',
+                text: 'Reintentar pago',
+                timer: 2700
+            })
         }}
     
         onCancel={(data) => {
-            alert('Pago cancelado por el usuario.');
+            Swal.fire({
+                icon: 'error',
+                title: 'Fallo en la transacción',
+                text: 'Usuario canceló el pago',
+                timer: 2700
+            })
         }}
     />
   )
