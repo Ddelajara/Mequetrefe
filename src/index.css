@@ -127,3 +127,18 @@
   font-weight: bold;
   color:chocolate;
 }
+
+
+.modalTitleBackground {
+  background-color: #6c6a6a;
+  color: #fff;
+}
+
+.form-control {
+  border-color: #333; /* O cualquier otro color que desees */
+}
+
+.form-control:focus {
+  border-color: #555; /* Cambia el color cuando el control está enfocado */
+  box-shadow: 0 0 0 0.2rem rgba(85, 85, 85, 0.25); /* Modifica el shadow cuando está enfocado si es necesario */
+}
