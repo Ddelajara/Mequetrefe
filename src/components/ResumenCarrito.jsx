@@ -5,7 +5,7 @@ import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { PayPalButtons } from '@paypal/react-paypal-js';
+import { PayPalButton } from './Paypal/PayPalButton'
 
 export function ResumenCarrito() {
     const { carrito, eliminarProducto } = useCarrito();
@@ -14,7 +14,7 @@ export function ResumenCarrito() {
     return (
     <>
         <Card className="border p-3 rounded">
-            <Card.Header style={{ color: '#228b22', fontWeight: 'bold' }}>
+            <Card.Header style={{ color: '#000000', fontWeight: 'bold' }}>
                 <h2>Resumen del Carro</h2>
             </Card.Header>
             <ListGroup variant="flush">
@@ -41,10 +41,10 @@ export function ResumenCarrito() {
                 ))}
             </ListGroup>
             <Card.Footer>
-                <h4>Total: ${total}</h4>
+                <h4 style={{ color: '#228b22', fontWeight: 'bold' }}>Total: ${total}</h4>
             </Card.Footer>
         </Card>
-        <PayPalButtons />
+        <PayPalButton key={total} invoice={'libro 1, libro 2'} totalValue={total}/>
     </>
     );
 }
