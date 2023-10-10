@@ -16,6 +16,7 @@ export function MenuNav() {
     let nombre = null;
     let apellido = null;
     let correo = null;
+    let rut = null;
     const navigate = useNavigate();
 
     const token = state?.token
@@ -27,7 +28,7 @@ export function MenuNav() {
         nombre = decoded.data.nombre.toUpperCase();
         apellido = decoded.data.apellido.toUpperCase();
         correo = decoded.data.correo;
-
+        rut = decoded.data.rut;
     }
 
   return (
@@ -60,7 +61,7 @@ export function MenuNav() {
                                 size="sm">Crear una Cuenta</Button>
                     </Stack>
                 )}
-                {isLoggedIn && <UserBadge firstName={nombre} lastName={apellido} correo={correo}/>}
+                {isLoggedIn && <UserBadge firstName={nombre} lastName={apellido} correo={correo} rut={rut}/>}
                 </Navbar.Collapse>
             </Container>
             </Navbar>

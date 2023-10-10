@@ -6,7 +6,7 @@ import withReactContent from 'sweetalert2-react-content'
 
 const MySwal = withReactContent(Swal)
 
-export const UserBadge = ({ firstName, lastName, correo }) => {
+export const UserBadge = ({ firstName, lastName, correo, rut }) => {
 
     const navigate = useNavigate();
     const [state, dispatch] = useContext(UserContext)
@@ -42,9 +42,35 @@ export const UserBadge = ({ firstName, lastName, correo }) => {
         
     }
 
+    function showUserProfile() {
+        MySwal.fire({
+            title: 'Perfil de Usuario',
+            html: `
+                <strong>Nombre:</strong> ${firstName} ${lastName} <br/>
+                <strong>Correo:</strong> ${correo} <br/>
+                <strong>Rut:</strong> ${rut} <br/>
+            `,
+            icon: 'info',
+            confirmButtonText: 'Cerrar',
+        });
+    }
+
     return (
     <>
     <div style={{ display: 'flex', alignItems: 'center' }}>
+         <img 
+            src="/image/account.png" 
+            alt="User Profile" 
+            style={{ 
+                cursor: 'pointer', 
+                marginRight: '10px', 
+                height: '50px',
+                borderRadius: '50%', 
+                objectFit: 'cover' // Imagen cubre todo el espacio disponible sin estirarse
+            }}
+            onClick={showUserProfile} 
+        />
+
         <div style={{
             background: 'black',
             color: 'white',
@@ -59,7 +85,6 @@ export const UserBadge = ({ firstName, lastName, correo }) => {
             {firstName[0]}{lastName[0]}
         </div>
         <div>
-            {/* <p style={{ margin: 0 }}>{correo} / Logout</p>  */}
             <p style={{ margin: 0 }}>{correo} / 
                 <a href="#" onClick={(e) => { 
                     e.preventDefault(); 

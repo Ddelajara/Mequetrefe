@@ -7,6 +7,7 @@ import { Onboarding } from "../pages/Onboarding"
 import { ListaProductos } from "../pages/ListaProductos"
 import { PagoOk } from "../pages/PagoOk"
 import { Transito } from "../pages/Transito"
+import { LoginOk } from "../pages/LoginOk"
 
 export const AppRouter = () => {
   return (
@@ -21,6 +22,7 @@ export const AppRouter = () => {
             <Route path='/ListaProductos' element={<ListaProductos />}/>
             <Route path='/PagoOK' element={<PagoOk />}/>
             <Route path='/Transito' element={<Transito />}/>
+            <Route path='/LoginOk' element={<LoginOk />}/>
         </Routes>
 
     </>

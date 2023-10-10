@@ -7,11 +7,13 @@ import { UserContext } from '../context/user/userContext';
 import axios from "axios"
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { useNavigate } from 'react-router-dom';
 
 const MySwal = withReactContent(Swal)
 
 export const Login = () => {
 
+    const navigate = useNavigate();
     const [state, dispatch] = useContext(UserContext)
 
     const [user, setUser] = useState({
@@ -49,9 +51,10 @@ export const Login = () => {
                 icon: 'success',
                 title: 'Tu acceso ha sido completado ' + user.correo,
                  showConfirmButton: false,
-                timer: 2300
+                timer: 2100
               })
 
+              navigate('/LoginOk')
             
           } catch (error) {
                 Swal.fire({
