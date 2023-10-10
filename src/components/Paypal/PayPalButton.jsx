@@ -40,7 +40,7 @@ export const PayPalButton = ({invoice, totalValue}) => {
                     producto: order.purchase_units[0].description
                 }));
 
-                navigate('/PagoOk')
+                navigate('/Transito')
 
         }}
     

@@ -10,18 +10,25 @@ import { useEffect } from 'react';
 export const PagoOk = () => {
 
         const {setCarrito } = useCarrito();  // Añade setCarrito aquí
+        const navigate = useNavigate();
 
         // Recuperando datos desde localStorage
         const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
 
-        //localStorage.removeItem('orderDetails');
-
-        const navigate = useNavigate();
-
-           // Limpiar el carrito de compras cuando se monta el componente
-        useEffect(() => {
+        if (!orderDetails) {
+            console.log("No hay detalles de orden en localStorage");
+            // Aquí puedes redireccionar al usuario a otra página o manejar este caso como mejor te parezca
             setCarrito([]);
-        }, [setCarrito]);
+            navigate('/ListaProductos');
+            return null;  // Si decides no renderizar el componente cuando no hay detalles de orden.
+        }
+
+        localStorage.removeItem('orderDetails');
+
+        const handleVolver = () => {
+            setCarrito([]);
+            navigate('/ListaProductos');
+        };
 
   return (
     <>
@@ -42,7 +49,7 @@ export const PagoOk = () => {
             </ListGroup>
         </Card>
         <div className="mt-4 text-center">
-            <Button variant="dark" onClick={() => navigate('/ListaProductos')}>Volver a la tienda</Button>
+            <Button variant="dark" onClick={handleVolver}>Volver a la tienda</Button>
         </div>
 
     </Container>
