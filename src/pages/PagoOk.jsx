@@ -10,7 +10,7 @@ export const PagoOk = () => {
         // Recuperando datos desde localStorage
         const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
 
-        localStorage.removeItem('orderDetails');
+        //localStorage.removeItem('orderDetails');
 
         const navigate = useNavigate();
 
@@ -28,6 +28,8 @@ export const PagoOk = () => {
                 <ListGroup.Item><strong>Fecha Creación:</strong> {orderDetails.creationDate}</ListGroup.Item>
                 <ListGroup.Item><strong>Nombre:</strong> {orderDetails.name}</ListGroup.Item>
                 <ListGroup.Item><strong>Correo electrónico:</strong> {orderDetails.email}</ListGroup.Item>
+                <ListGroup.Item><strong>Detalle:</strong> {orderDetails.producto}</ListGroup.Item>
+                <ListGroup.Item><strong>Total Pagado:</strong> {orderDetails.currency_code + ' ' + orderDetails.value}</ListGroup.Item>
             </ListGroup>
         </Card>
         <div className="mt-4 text-center">

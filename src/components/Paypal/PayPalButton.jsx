@@ -36,7 +36,10 @@ export const PayPalButton = ({invoice, totalValue}) => {
                     orderID: order.id,
                     creationDate: order.create_time,
                     name: order.payer.name.given_name + ' ' + order.payer.name.surname,
-                    email: order.payer.email_address
+                    email: order.payer.email_address,
+                    currency_code: order.purchase_units[0].amount.currency_code,
+                    value: order.purchase_units[0].amount.value,
+                    producto: order.purchase_units[0].description
                 }));
 
                 navigate('/PagoOk')

@@ -10,6 +10,7 @@ import { PayPalButton } from './Paypal/PayPalButton'
 export function ResumenCarrito() {
     const { carrito, eliminarProducto } = useCarrito();
     const total = carrito.reduce((acc, producto) => acc + parseFloat(producto.Precio), 0).toFixed(2);
+    const invoiceDetails = carrito.map(producto => producto.Titulo).join(', ');
 
     return (
     <>
@@ -44,7 +45,7 @@ export function ResumenCarrito() {
                 <h4 style={{ color: '#228b22', fontWeight: 'bold' }}>Total: ${total}</h4>
             </Card.Footer>
         </Card>
-        <PayPalButton key={total} invoice={'libro 1, libro 2'} totalValue={total}/>
+        <PayPalButton key={total} invoice={invoiceDetails} totalValue={total}/>
     </>
     );
 }
