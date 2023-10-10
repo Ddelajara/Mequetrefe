@@ -17,7 +17,6 @@ export const PagoOk = () => {
 
         if (!orderDetails) {
             console.log("No hay detalles de orden en localStorage");
-            // Aquí puedes redireccionar al usuario a otra página o manejar este caso como mejor te parezca
             setCarrito([]);
             navigate('/ListaProductos');
             return null;  // Si decides no renderizar el componente cuando no hay detalles de orden.
