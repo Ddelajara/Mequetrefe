@@ -1,8 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Row, Col } from 'react-bootstrap';
-import Placeholder from 'react-bootstrap/Placeholder';
-
 import { useCarrito } from '../context/carrito/carritoContext';
 import { useContext } from 'react';
 import { UserContext } from '../context/user/userContext';
