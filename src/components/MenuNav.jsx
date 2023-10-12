@@ -46,7 +46,7 @@ export function MenuNav() {
                 <Nav className="me-auto">
                     <Nav.Link href="/">Inicio</Nav.Link>
                     <Nav.Link href="/ListaProductos">Tienda</Nav.Link>
-                    <Nav.Link href="#link">Acerca de Nosotros</Nav.Link>
+                    <Nav.Link href="/Acerca">Acerca de Nosotros</Nav.Link>
                     {/* <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
                     {isLoggedIn ? 'Logout' : 'Login'}
                     </button> */}

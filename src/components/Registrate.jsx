@@ -9,6 +9,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { useNavigate } from 'react-router-dom';
+import { Footer } from './Footer';
 
 const MySwal = withReactContent(Swal)
 
@@ -19,14 +20,14 @@ export function Registrate() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const form = event.currentTarget;
+
     if (form.checkValidity() === false) {
       event.stopPropagation();
     } else {
       // Recolecta la data del formulario
       const formData = new FormData(form);
-
-   
       const userData = {
         nombre: formData.get('nombre'),
         apellido: formData.get('apellido'),
@@ -35,7 +36,6 @@ export function Registrate() {
         direccion: formData.get('direccion'),
         codigoPostal: formData.get('codigoPostal'),
         password: formData.get('password'),
-        // Asegúrate de agregar campos para 'rut' y 'password' en tu formulario
       };
       // Envía la data al servidor usando axios
       try {
@@ -61,7 +61,6 @@ export function Registrate() {
         }
       } catch (error) {
         if (error.response) {
-          // Mostrar el mensaje de error desde el servidor si está disponible
             Swal.fire({
                 icon: 'error',
                 title: 'Problemas en el registro',
@@ -73,10 +72,12 @@ export function Registrate() {
         }
       }
     }
+    
     setValidated(true);
   };
 
   return (
+    <>
 
     <Container className='rounded border p-4 mt-5 custom-border-color'
         style={{
@@ -93,7 +94,7 @@ export function Registrate() {
             <Form.Control
                 required
                 type="text"
-                placeholder="First name"
+                placeholder=""
                 name="nombre"
                 //defaultValue="Mark"
             />
@@ -110,7 +111,7 @@ export function Registrate() {
             <Form.Control
                 required
                 type="text"
-                placeholder="Last name"
+                placeholder=""
                 name="apellido"
                 //defaultValue="Otto"
             />
@@ -128,7 +129,7 @@ export function Registrate() {
                 <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                 <Form.Control
                 type="text"
-                placeholder="Username"
+                placeholder=""
                 aria-describedby="inputGroupPrepend"
                 name="correo"
                 required
@@ -148,11 +149,14 @@ export function Registrate() {
             <Form.Control type="text" 
                             placeholder="99999999-9" 
                             name="rut"
-                            required />
+                            required 
+                            //isInvalid={!rutValido}
+                            //onChange={handleRutChange}
+                            />
             <Form.Control.Feedback
                 type="invalid"
                 style={{ color: '#ffff00' }}>
-                Ingresar Rut.
+                 RUT no válido.
             </Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="validationCustom03">
@@ -198,13 +202,16 @@ export function Registrate() {
         <Form.Group className="mb-3">
             <Form.Check
             required
-            label="Agree to terms and conditions"
-            feedback="You must agree before submitting."
+            //label="Aceptar términos y condiciones."
+            label={<span style={{ color: '#ffffff' }}>Aceptar términos y condiciones.</span>}
+            feedback={<span style={{ color: '#ffffff' }}>Debe aceptar antes de enviar.</span>}
             feedbackType="invalid"
-            style={{ color: '#ffff00' }}/>
+            style={{ color: '#ffffff' }}/>
         </Form.Group>
         <Button variant="dark" type="submit">Enviar Registro</Button>
         </Form>
     </Container>
+    <Footer />
+    </>
   );
 }
