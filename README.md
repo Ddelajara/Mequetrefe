@@ -14,7 +14,7 @@ Express - Mongo DB y librerías JS y React -Bootsrap
 Herramientas utilizadas para crear el proyecto:
 
 * REACT + VITE - Estructura del sitio web.
-* CSS - Estilos y diseño visual, usando React - Bootsra
+* CSS - Estilos y diseño visual, usando React - Boostrap
 * JavaScript - Lógica y funcionalidad.
 * Librerias Bootstrap - swettAlert2
 * Netfily para el despliegue del FrontEnd.
